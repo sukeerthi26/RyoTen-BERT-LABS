@@ -10,6 +10,7 @@ This repository contains the source code for the RyoTen Luxury website, a web ap
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
+- [Features with pictures](#features-with-images)
 
 
 
@@ -92,5 +93,33 @@ Before you begin, ensure you have the following installed:
 
 2. Open your browser and navigate to [http://localhost:5000](http://localhost:5000) to access the RyoTen Luxury website.
 
+
+## features-with-images
+
+- **Home Page:**
+  - Displays a quick summary graph/chart of transactions for respective merchants and users.
+  - ![Home page](Images/home.png)
+
+- **Dashboard Page:**
+  - Provides a list of transactions with details, including transaction ID, merchant name, amount, status, initiated at, and last updated at.
+  - Supports filters for merchant name (partial matches) and amount range.
+  - ![Home page](Images/dashboard.png)
+
+- **Merchant-Name Filter:**
+  - In the dashboard, you can filter transactions by entering a partial or full merchant name.
+  - ![Home page](Images/name-filter.png)
+
+- **Amount-Range Filter:**
+  - In the dashboard, you can filter transactions based on the amount range, specifying minimum and maximum amounts.
+  - ![Home page](Images/amount-filter.png)
+
+- **Name-Amount Filter:**
+  - In the dashboard, you can combine filters to search for transactions based on both merchant name and amount range.
+  - ![Home page](Images/name-amount-filter.png)
+
+- **Transaction-Details:**
+  - Clicking on a transaction ID in the dashboard leads to a detailed view page.
+  - The detailed view includes a timeline of the transaction's status, resembling a courier package tracking timeline.
+  - ![Home page](Images/transaction-details.png)
 
 
