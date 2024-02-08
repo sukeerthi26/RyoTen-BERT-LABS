@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+{% block style_content %}
+.details-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.detail-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+.timeline-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-section h2 {
+    color: #333;
+}
+
+.timeline-list {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-item {
+    margin-bottom: 15px;
+}
+
+.timeline-date {
+    font-weight: bold;
+
+}
+
+.timeline-status {
+    margin-left: 10px;
+
+}
+{% endblock %} 
+
+{% block content %}
+<div class="dashboard-header">
+    <h1>Transaction Details</h1>
+</div>
+
+<div class="timeline-section">
+    <div class="details-list">
+        <div class="detail-item">
+            <span class="detail-label">Transaction ID:</span>
+            <span class="detail-value">{{ transaction['transactionId'] }}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Merchant Name:</span>
+            <span class="detail-value">{{ transaction['merchantName'] }}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Amount:</span>
+            <span class="detail-value">{{ transaction['amount'] }}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Status:</span>
+            <span class="detail-value">{{ transaction['status'] }}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Initiated At:</span>
+            <span class="detail-value">{{ transaction['initiatedAt'] }}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Last Updated At:</span>
+            <span class="detail-value">{{ transaction['lastUpdatedAt'] }}</span>
+        </div>
+    </div>
+    <h2>Timeline:</h2>
+    <ul class="timeline-list">
+        {% for event in transaction['timeline'] %}
+            <li class="timeline-item">
+                <span class="timeline-date">{{ event['date'] }}</span> - 
+                <span class="timeline-status">{{ event['status'] }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
+

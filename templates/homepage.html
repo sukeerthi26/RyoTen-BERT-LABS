@@ -1,0 +1,50 @@
+{% extends 'index.html' %} 
+{% block style_content %} 
+canvas { background-color:#fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; }
+{% endblock %} 
+{% block content %}
+<div class="dashboard-header">
+  <h1>Merchant Transactions Chart</h1>
+</div>
+<div style="width: 80%; margin: auto">
+  <canvas id="merchantsChart"></canvas>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      var ctx = document.getElementById('merchantsChart').getContext('2d');
+      var chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: [
+                  {% for transaction in transactions_data %}
+                      "{{ transaction['_id'] }}",
+                  {% endfor %}
+              ],
+              datasets: [{
+                  label: 'Number of Transactions',
+                  data: [
+                      {% for transaction in transactions_data %}
+                          {{ transaction['transaction_count'] }},
+                      {% endfor %}
+                  ],
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+  });
+</script>
+{% endblock %}

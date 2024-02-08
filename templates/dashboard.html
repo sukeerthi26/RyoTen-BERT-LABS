@@ -1,0 +1,50 @@
+<!-- templates/dashboard.html -->
+{% extends 'index.html' %}
+{% block content %}
+<div class="dashboard-header">
+    <h1>Transaction Dashboard</h1>
+</div>
+<div class="filter-section">
+    <h2>Filter Transactions:</h2>
+</div>
+<div class="filter-options">
+<form action="/transactions" method="get">
+    <label for="merchant_name">Merchant Name:</label>
+    <input type="text" name="merchant_name" value="{{ request.args.get('merchant_name', '') }}">
+    
+    <label for="amount_min">Amount Min:</label>
+    <input type="number" name="amount_min" value="{{ request.args.get('amount_min', 0) }}">
+    
+    <label for="amount_max">Amount Max:</label>
+    <input type="number" name="amount_max" value="{{ request.args.get('amount_max', '') }}">
+    
+    <input type="submit" value="Apply Filters">
+</form>
+</div>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Merchant Name</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Initiated At</th>
+            <th>Last Updated At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+            <tr>
+                <td><a href="{{ url_for('transaction_details', transaction_id=transaction['transactionId']) }}">{{ transaction['transactionId'] }}</a></td>
+                <td>{{ transaction['merchantName'] }}</td>
+                <td>{{ transaction['amount'] }}</td>
+                <td>{{ transaction['status'] }}</td>
+                <td>{{ transaction['initiatedAt'] }}</td>
+                <td>{{ transaction['lastUpdatedAt'] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+
