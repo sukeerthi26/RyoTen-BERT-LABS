@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RyoTen Luxury Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style> {% block style_content %}{% endblock %} </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>RyoTen Luxury</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/transactions">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+        {% block content %}{% endblock %}
+    <footer>
+        <p>&copy; 2024 RyoTen Luxury. All rights reserved.</p>
+    </footer>
+</body>
+</html>
